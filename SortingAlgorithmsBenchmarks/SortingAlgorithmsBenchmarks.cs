@@ -9,25 +9,46 @@ namespace SortingAlgorithmsBenchmarks;
 [RankColumn]
 public class SortingAlgorithmsBenchmarks
 {
-    private const int ArrayLength = 10000;
-    private readonly int[] _input = new int[ArrayLength];
+    // Define parameters for different scenarios
+    [Params(100, 1000, 5000)]
+    public int ArrayLength;
+    
+    private int[] _original;   // original input
+    private int[] _working;    // buffer used for sorting
 
     private readonly ISorter _bubbleSort = new BubbleSort();
-
-    public SortingAlgorithmsBenchmarks()
+    private readonly ISorter _selectionSort = new SelectionSort();
+    
+    // Run global setup once for each value of ArrayLength
+    [GlobalSetup]
+    public void GlobalSetup()
     {
-        GenerateRandomArray();
+        _original = GenerateRandomArray(ArrayLength); 
+        _working = new int[ArrayLength];
     }
-
-    private void GenerateRandomArray()
+    
+    [Benchmark(Baseline = true)]
+    public void BubbleSort()
     {
-        var rand = new Random(Guid.NewGuid().GetHashCode());
-        for (var i = 0; i < ArrayLength; i++)
-        {
-            _input[i] = rand.Next(); 
-        }
+        Array.Copy(_original, _working, ArrayLength);
+        _bubbleSort.Sort(_working);
     }
 
     [Benchmark]
-    public void BubbleSort() => _bubbleSort.Sort(_input);
+    public void SelectionSort()
+    {
+        Array.Copy(_original, _working, ArrayLength);
+        _selectionSort.Sort(_working);
+    }
+    
+    private static int[] GenerateRandomArray(int length)
+    {
+        var rand = new Random(Guid.NewGuid().GetHashCode());
+        
+        var randomArray = Enumerable.Range(0, length)
+            .Select(_ => rand.Next())
+            .ToArray();
+
+        return randomArray;
+    }
 }

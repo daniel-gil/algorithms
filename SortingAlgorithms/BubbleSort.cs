@@ -19,7 +19,7 @@ public class BubbleSort : ISorter
                 if (array[j] <= array[j + 1]) continue;
             
                 // the pair of values are in the wrong order, we need to swap them
-                Swap(array, j, j + 1);
+                array.Swap( j, j + 1);
                 isSorted = false;
             }
             
@@ -29,12 +29,5 @@ public class BubbleSort : ISorter
                 break;
             }
         } 
-    }
-
-    private static void Swap(int[] array, int i, int j)
-    {
-        var tmp = array[i];
-        array[i] = array[j];
-        array[j] = tmp;
     }
 }

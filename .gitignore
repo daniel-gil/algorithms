@@ -1,5 +1,8 @@
 .DS_Store
 
+# Benchmark Results
+BenchmarkDotNet.Artifacts/
+
 # Build folders
 bin/
 obj/
