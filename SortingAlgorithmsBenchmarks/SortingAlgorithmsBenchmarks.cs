@@ -10,7 +10,7 @@ namespace SortingAlgorithmsBenchmarks;
 public class SortingAlgorithmsBenchmarks
 {
     // Define parameters for different scenarios
-    [Params(100, 1000, 5000)]
+    [Params(100, 1000, 5000, 10000)]
     public int ArrayLength;
     
     private int[] _original;   // original input
@@ -18,6 +18,7 @@ public class SortingAlgorithmsBenchmarks
 
     private readonly ISorter _bubbleSort = new BubbleSort();
     private readonly ISorter _selectionSort = new SelectionSort();
+    private readonly ISorter _insertionSort = new InsertionSort();
     
     // Run global setup once for each value of ArrayLength
     [GlobalSetup]
@@ -39,6 +40,13 @@ public class SortingAlgorithmsBenchmarks
     {
         Array.Copy(_original, _working, ArrayLength);
         _selectionSort.Sort(_working);
+    }
+    
+    [Benchmark]
+    public void InsertionSort()
+    {
+        Array.Copy(_original, _working, ArrayLength);
+        _insertionSort.Sort(_working);
     }
     
     private static int[] GenerateRandomArray(int length)
