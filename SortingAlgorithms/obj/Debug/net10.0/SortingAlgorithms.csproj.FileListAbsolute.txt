@@ -1,0 +1,11 @@
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/bin/Debug/net10.0/SortingAlgorithms.deps.json
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/bin/Debug/net10.0/SortingAlgorithms.dll
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/bin/Debug/net10.0/SortingAlgorithms.pdb
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/SortingAlgorithms.GeneratedMSBuildEditorConfig.editorconfig
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/SortingAlgorithms.AssemblyInfoInputs.cache
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/SortingAlgorithms.AssemblyInfo.cs
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/SortingAlgorithms.csproj.CoreCompileInputs.cache
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/SortingAlgorithms.dll
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/refint/SortingAlgorithms.dll
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/SortingAlgorithms.pdb
+/Users/danielgil/Projects/Algorithms/SortingAlgorithms/obj/Debug/net10.0/ref/SortingAlgorithms.dll
