@@ -4,23 +4,31 @@ public class BubbleSort : ISorter
 {
     public void Sort(int[] array)
     {
-        while (!IterationSort(array))
-        { }
-    }
-
-    private static bool IterationSort(int[] array)
-    {
-        var sorted = true;
-
-        for (var i = 0; i < array.Length-1; i++)
+        for (var i = 0; i < array.Length - 1; i++)
         {
-            if (array[i] <= array[i + 1]) continue;
+            var isSorted = true;
+
+            // because at the end of each iteration the next largest item bubbles up
+            // and moves to its correct position, so we don't need to compare until 
+            // the end of the array, just compare with all the items are not in the correct position
+            var endIndex = array.Length - 1 - i;
             
-            Swap(array, i, i + 1);
-            sorted = false;
-        }
-        
-        return sorted;
+            for (var j = 0; j < endIndex; j++)
+            {
+                // both values are already sorted, nothing to do here
+                if (array[j] <= array[j + 1]) continue;
+            
+                // the pair of values are in the wrong order, we need to swap them
+                Swap(array, j, j + 1);
+                isSorted = false;
+            }
+            
+            if (isSorted)
+            {
+                // if in the current iteration we didn't swap any element we assume the array is already sorted
+                break;
+            }
+        } 
     }
 
     private static void Swap(int[] array, int i, int j)
