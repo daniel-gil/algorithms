@@ -15,6 +15,19 @@ public static class SharedComparisonSortTests
         Assert.Equal(expected, input);
     }
     
+    // array with duplicates
+    public static void ArrayWithDuplicates_SortsArrayCorrectly(ISorter sorter)
+    {
+        int[] input = { 7, 3, 5, 2, 3, 1, 5, 8};
+        int[] expected = { 1, 2, 3, 3, 5, 5, 7, 8 };
+        sorter.Sort(input);
+        Assert.Equal(expected, input);
+
+        sorter.Sort(input);
+
+        Assert.Equal(expected, input);
+    }
+    
     // empty array
     public static void EmptyArray_ShouldReturnEmptyArray(ISorter sorter)
     {

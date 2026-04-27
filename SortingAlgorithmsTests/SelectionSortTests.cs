@@ -8,9 +8,16 @@ public class SelectionSortTests
     
     // Test for SelectionSort with a normal array
     [Fact]
-    public void SelectionSort_SortsArrayCorrectly()
+    public void SelectionSort_NormalArray_SortsArrayCorrectly()
     {
         SharedComparisonSortTests.NormalArray_SortsArrayCorrectly(_selectionSort);
+    }
+    
+    // Test for SelectionSort with an array with duplicates
+    [Fact]
+    public void SelectionSort_ArrayWithDuplicates_SortsArrayCorrectly()
+    {
+        SharedComparisonSortTests.ArrayWithDuplicates_SortsArrayCorrectly(_selectionSort);
     }
     
     // Test with an empty array

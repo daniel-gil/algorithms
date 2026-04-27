@@ -8,9 +8,16 @@ public class InsertionSortTests
     
     // Test for InsertionSort with a normal array
     [Fact]
-    public void InsertionSort_SortsArrayCorrectly()
+    public void InsertionSort_NormalArray_SortsArrayCorrectly()
     {
         SharedComparisonSortTests.NormalArray_SortsArrayCorrectly(_insertionSort);
+    }
+    
+    // Test for InsertionSort_ with an array with duplicates
+    [Fact]
+    public void InsertionSort_ArrayWithDuplicates_SortsArrayCorrectly()
+    {
+        SharedComparisonSortTests.ArrayWithDuplicates_SortsArrayCorrectly(_insertionSort);
     }
     
     // Test with an empty array

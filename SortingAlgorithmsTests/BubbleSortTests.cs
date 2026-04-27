@@ -8,9 +8,16 @@ public class BubbleSortTests
     
     // Test for BubbleSort with a normal array
     [Fact]
-    public void BubbleSort_SortsArrayCorrectly()
+    public void BubbleSort_NormalArray_SortsArrayCorrectly()
     {
         SharedComparisonSortTests.NormalArray_SortsArrayCorrectly(_bubbleSort);
+    }
+    
+    // Test for BubbleSort with an array with duplicates
+    [Fact]
+    public void BubbleSort_ArrayWithDuplicates_SortsArrayCorrectly()
+    {
+        SharedComparisonSortTests.ArrayWithDuplicates_SortsArrayCorrectly(_bubbleSort);
     }
     
     // Test with an empty array
