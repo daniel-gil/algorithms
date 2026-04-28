@@ -70,7 +70,7 @@ public class QuickSort : ISorter
 
     private static int PivotIteration(int[] array, int startIndex, int endIndex)
     {
-        var pivotValue = array[endIndex];
+        var pivotValue = array[endIndex]; // select the last item as the pivot
         var (leftPartition, rightPartition) = BuildPartitions(array, pivotValue, startIndex, endIndex);
         var pivotIndex = UpdateArray(pivotValue, startIndex, leftPartition, rightPartition, array);
         return pivotIndex;
@@ -108,24 +108,22 @@ public class QuickSort : ISorter
         List<int> rightPartition, 
         int[] array)
     {
-        var index = startIndex; 
-        
         // first process the left partition
-        for (var i = 0; i < leftPartition.Count; i++)
+        if (leftPartition.Count > 0)
         {
-            array[index++] = leftPartition[i];
-        }
-        
-        // second process the pivot
-        var pivotIndex = index;
-        array[index++] = pivotValue;
-        
-        // finally process the right partition
-        for (var i = 0; i < rightPartition.Count; i++)
-        {
-            array[index++] = rightPartition[i];
+            Array.Copy(leftPartition.ToArray(), 0, array, startIndex, leftPartition.Count);
         }
 
+        // second process the pivot
+        var pivotIndex = startIndex + leftPartition.Count;
+        array[pivotIndex] = pivotValue;
+        
+        // finally process the right partition
+        if (rightPartition.Count > 0)
+        {
+            Array.Copy(rightPartition.ToArray(), 0, array, pivotIndex+1, rightPartition.Count);    
+        }
+        
         return pivotIndex;
     }
 }

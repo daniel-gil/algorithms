@@ -19,6 +19,7 @@ public class SortingAlgorithmsBenchmarks
     private readonly ISorter _bubbleSort = new BubbleSort();
     private readonly ISorter _selectionSort = new SelectionSort();
     private readonly ISorter _insertionSort = new InsertionSort();
+    private readonly ISorter _quickSort = new QuickSort();
     
     // Run global setup once for each value of ArrayLength
     [GlobalSetup]
@@ -47,6 +48,13 @@ public class SortingAlgorithmsBenchmarks
     {
         Array.Copy(_original, _working, ArrayLength);
         _insertionSort.Sort(_working);
+    }
+    
+    [Benchmark]
+    public void QuickSort()
+    {
+        Array.Copy(_original, _working, ArrayLength);
+        _quickSort.Sort(_working);
     }
     
     private static int[] GenerateRandomArray(int length)
