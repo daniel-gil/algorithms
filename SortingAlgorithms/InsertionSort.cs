@@ -16,29 +16,23 @@ public class InsertionSort : ISorter
             var currentValue = array[i];
             var insertionIndex = FindInsertionIndex(array, i, currentValue);
             
-            if (insertionIndex >= 0)
-            {
-                // move the current value where it belongs
-                array[insertionIndex] = currentValue;
-            }
+            // place the currentValue in the gap created at j+1 
+            array[insertionIndex] = currentValue;
         }        
     }
 
     private static int FindInsertionIndex(int[] array, int i, int currentValue)
     {
-        var currentIndex = i;
-        var tmpIndex = i;
-            
-        for (var j = i - 1; j >= 0; j--)
+        var j = i - 1;
+
+        // Shift elements that are greater than currentValue one position to the right
+        // The loop stops when j reaches -1 or array[j] is less than currentValue
+        while (j >= 0 && array[j] > currentValue)
         {
-            if (array[j] <= currentValue) continue;
-                
-            array[tmpIndex--] = array[j];
-                    
-            // after shifting the value to the right, we left place to potentially insert the current value
-            currentIndex = j;
+            array[j + 1] = array[j]; // shift right
+            j--;
         }
 
-        return (currentIndex == i) ? -1 : currentIndex;
+        return j + 1;
     }
 }

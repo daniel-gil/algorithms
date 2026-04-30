@@ -7,6 +7,7 @@ public class SelectionSort : ISorter
         // the index 'i' represents the current index where to place the next smallest value
         for (var i = 0; i < array.Length; i++)
         {
+            // find the minimum element in the remaining unsorted array [i+1, N-1]
             var minIndex = FindMinIndex(array, i);
 
             // if the value is already in the correct position, we can skip swapping

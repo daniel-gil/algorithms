@@ -13,6 +13,17 @@ public class InsertionSortTests
         SharedComparisonSortTests.NormalArray_SortsArrayCorrectly(_insertionSort);
     }
     
+    // Test for InsertionSort with a normal array (more scenarios)
+    [Theory]
+    [InlineData(new[] { 8, 2, 4, 1, 3 }, new[] { 1, 2, 3, 4, 8 } )]
+    [InlineData(new[] { 15, 6, 3, 1, 22, 10, 13 }, new[] { 1, 3, 6, 10, 13, 15, 22 } )]
+    [InlineData(new[] { 35, 130, 80, 2, 15, 44, 67, 0, 256 }, new[] { 0, 2, 15, 35, 44, 67, 80, 130, 256 } )]
+    public void InsertionSort_NormalArrayV2_SortsArrayCorrectly(int[] input, int[] expected)
+    {
+        _insertionSort.Sort(input);
+        Assert.Equal(expected, input);
+    }
+
     // Test for InsertionSort_ with an array with duplicates
     [Fact]
     public void InsertionSort_ArrayWithDuplicates_SortsArrayCorrectly()
