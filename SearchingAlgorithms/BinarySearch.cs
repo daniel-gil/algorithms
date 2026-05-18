@@ -14,7 +14,7 @@ public class BinarySearch : ISearcher
             return -1;
         }
         
-        // find middle point and compare it with the target
+        // find middle point  and compare it with the target
         var middleIndex = (start + end) / 2;
         var middleValue = array[middleIndex];
 
