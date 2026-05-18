@@ -7,7 +7,7 @@ namespace SortingAlgorithmsBenchmarks;
 [MemoryDiagnoser]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
-public class SortingAlgorithmsBenchmarks
+public class SortingBenchmarks
 {
     // Define parameters for different scenarios
     [Params(100, 1000, 5000, 10000)]
