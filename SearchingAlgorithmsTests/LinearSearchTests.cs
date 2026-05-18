@@ -7,6 +7,12 @@ public class LinearSearchTests
     private readonly ISearcher _searcher = new LinearSearch();
     
     [Fact]
+    public void LinearSearch_SortedArrayContainingTarget_FindsTarget()
+    {
+        SharedSearchingTests.SortedArrayContainingTarget_FindsTarget(_searcher);
+    }
+    
+    [Fact]
     public void LinearSearch_ArrayContainingTarget_FindsTarget()
     {
         SharedSearchingTests.ArrayContainingTarget_FindsTarget(_searcher);

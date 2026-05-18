@@ -15,6 +15,30 @@ public static class SharedSearchingTests
         Assert.Equal(expectedIndex, index);
     }
     
+    public static void SortedArrayContainingTarget_FindsTarget(ISearcher searcher)
+    {
+        const int target = 6;
+        const int expectedIndex = 2;
+        int[] input = [3, 5, 6, 9, 11, 18, 20, 22, 24, 35];
+
+        var index = searcher.Search(input, target);
+
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayNotContainingTarget_ReturnsMinusOne(ISearcher searcher)
+    {
+        const int target = 34;
+        const int expectedIndex = -1;
+        int[] input = [3, 5, 6, 9, 11, 18, 20, 22, 24, 35];
+
+        var index = searcher.Search(input, target);
+
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    
+    
     public static void ArrayContainingTargetWithRepeats_FindsTarget(ISearcher searcher)
     {
         const int target = 1;
