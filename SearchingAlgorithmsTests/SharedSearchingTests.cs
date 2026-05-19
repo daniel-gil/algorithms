@@ -4,6 +4,7 @@ namespace SearchingAlgorithmsTests;
 
 public static class SharedSearchingTests
 {
+    
     public static void RandomArrayContainingTarget_FindsTarget(ISearcher searcher)
     {
         const int target = 1;
@@ -78,6 +79,116 @@ public static class SharedSearchingTests
 
         var index = searcher.Search(input, target);
 
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayNotContainingTargetAtTheEnd_NotFound(ISearcher searcher)
+    {
+        const int target = 40;
+        const int expectedIndex = -1;
+        int[] input = [1, 5, 6, 9, 11, 18, 20, 23, 24, 35];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayContainingTargetAtTheEnd_FindsTarget(ISearcher searcher)
+    {
+        const int target = 35;
+        const int expectedIndex = 9;
+        int[] input = [1, 5, 6, 9, 11, 18, 20, 23, 24, 35];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayTargetZero_NotFound(ISearcher searcher)
+    {
+        const int target = 0;
+        const int expectedIndex = -1;
+        int[] input = [1, 5, 6, 9, 11, 18, 20, 23, 24, 35];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayNegativeTarget_NotFound(ISearcher searcher)
+    {
+        const int target = -5;
+        const int expectedIndex = -1;
+        int[] input = [1, 5, 6, 9, 11, 18, 20, 23, 24, 35];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayWithTwoItemsTargetAtSecondPosition_FindsTarget(ISearcher searcher)
+    {
+        const int target = 5;
+        const int expectedIndex = 1;
+        int[] input = [1, 5];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayWithTwoItemsTargetAtFirstPosition_FindsTarget(ISearcher searcher)
+    {
+        const int target = 1;
+        const int expectedIndex = 0;
+        int[] input = [1, 5];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayWithTwoItemsNonExistingItemInFirstBlock_NotFound(ISearcher searcher)
+    {
+        const int target = 2;
+        const int expectedIndex = -1;
+        int[] input = [1, 5];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayWithOneItem_FindsTarget(ISearcher searcher)
+    {
+        const int target = 5;
+        const int expectedIndex = 0;
+        int[] input = [5];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayWithOneItemTargetBefore_NotFound(ISearcher searcher)
+    {
+        const int target = 2;
+        const int expectedIndex = -1;
+        int[] input = [5];
+    
+        var index = searcher.Search(input, target);
+    
+        Assert.Equal(expectedIndex, index);
+    }
+    
+    public static void SortedArrayWithOneItemTargetAfter_NotFound(ISearcher searcher)
+    {
+        const int target = 22;
+        const int expectedIndex = -1;
+        int[] input = [5];
+    
+        var index = searcher.Search(input, target);
+    
         Assert.Equal(expectedIndex, index);
     }
 }
