@@ -15,25 +15,25 @@ public class LinearSearchTests
     [Fact]
     public void LinearSearch_ArrayContainingTarget_FindsTarget()
     {
-        SharedSearchingTests.ArrayContainingTarget_FindsTarget(_searcher);
+        SharedSearchingTests.RandomArrayContainingTarget_FindsTarget(_searcher);
     }
     
     [Fact]
     public void LinearSearch_ArrayContainingTargetWithRepeats_FindsTarget()
     {
-        SharedSearchingTests.ArrayContainingTargetWithRepeats_FindsTarget(_searcher);
+        SharedSearchingTests.RandomArrayContainingTargetWithRepeats_FindsTarget(_searcher);
     }
     
     [Fact]
     public void LinearSearch_ArrayWithNegativeValuesContainingTarget_FindsTarget()
     {
-        SharedSearchingTests.ArrayWithNegativeValuesContainingTarget_FindsTarget(_searcher);
+        SharedSearchingTests.RandomArrayWithNegativeValuesContainingTarget_FindsTarget(_searcher);
     }
     
     [Fact]
     public void LinearSearch_ArrayNotContainingTarget_ReturnsNegativeOne()
     {
-        SharedSearchingTests.ArrayNotContainingTarget_ReturnsNegativeOne(_searcher);
+        SharedSearchingTests.RandomArrayNotContainingTarget_ReturnsNegativeOne(_searcher);
     }
     
     [Fact]

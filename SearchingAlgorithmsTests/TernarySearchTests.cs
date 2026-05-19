@@ -12,9 +12,9 @@ public class TernarySearchTests
         SharedSearchingTests.SortedArrayContainingTarget_FindsTarget(_searcher);
     } 
     [Fact]
-    public void TernarySearch_SortedArrayNotContainingTarget_ReturnsMinusOne()
+    public void TernarySearch_SortedArrayNotContainingTarget_NotFound()
     {
-        SharedSearchingTests.SortedArrayNotContainingTarget_ReturnsMinusOne(_searcher);
+        SharedSearchingTests.SortedArrayNotContainingTarget_NotFound(_searcher);
     }
     
     [Fact]

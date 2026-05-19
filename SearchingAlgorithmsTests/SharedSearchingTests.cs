@@ -4,7 +4,7 @@ namespace SearchingAlgorithmsTests;
 
 public static class SharedSearchingTests
 {
-    public static void ArrayContainingTarget_FindsTarget(ISearcher searcher)
+    public static void RandomArrayContainingTarget_FindsTarget(ISearcher searcher)
     {
         const int target = 1;
         const int expectedIndex = 4;
@@ -26,7 +26,7 @@ public static class SharedSearchingTests
         Assert.Equal(expectedIndex, index);
     }
     
-    public static void SortedArrayNotContainingTarget_ReturnsMinusOne(ISearcher searcher)
+    public static void SortedArrayNotContainingTarget_NotFound(ISearcher searcher)
     {
         const int target = 34;
         const int expectedIndex = -1;
@@ -37,9 +37,7 @@ public static class SharedSearchingTests
         Assert.Equal(expectedIndex, index);
     }
     
-    
-    
-    public static void ArrayContainingTargetWithRepeats_FindsTarget(ISearcher searcher)
+    public static void RandomArrayContainingTargetWithRepeats_FindsTarget(ISearcher searcher)
     {
         const int target = 1;
         const int expectedIndex = 3;
@@ -50,7 +48,7 @@ public static class SharedSearchingTests
         Assert.Equal(expectedIndex, index);
     }
     
-    public static void ArrayWithNegativeValuesContainingTarget_FindsTarget(ISearcher searcher)
+    public static void RandomArrayWithNegativeValuesContainingTarget_FindsTarget(ISearcher searcher)
     {
         const int target = -1;
         const int expectedIndex = 4;
@@ -61,7 +59,7 @@ public static class SharedSearchingTests
         Assert.Equal(expectedIndex, index);
     }
     
-    public static void ArrayNotContainingTarget_ReturnsNegativeOne(ISearcher searcher)
+    public static void RandomArrayNotContainingTarget_ReturnsNegativeOne(ISearcher searcher)
     {
         const int target = 125;
         const int expectedIndex = -1;

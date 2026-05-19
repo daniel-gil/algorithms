@@ -12,9 +12,9 @@ public class BinarySearchTests
         SharedSearchingTests.SortedArrayContainingTarget_FindsTarget(_searcher);
     } 
     [Fact]
-    public void BinarySearch_SortedArrayNotContainingTarget_ReturnsMinusOne()
+    public void BinarySearch_SortedArrayNotContainingTarget_NotFound()
     {
-        SharedSearchingTests.SortedArrayNotContainingTarget_ReturnsMinusOne(_searcher);
+        SharedSearchingTests.SortedArrayNotContainingTarget_NotFound(_searcher);
     }
     
     [Fact]

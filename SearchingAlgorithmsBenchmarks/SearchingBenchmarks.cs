@@ -15,6 +15,7 @@ public class SearchingBenchmarks
     private readonly ISearcher _linearSearch = new LinearSearch();
     private readonly ISearcher _binarySearch = new BinarySearch();
     private readonly ISearcher _ternarySearch = new TernarySearch();
+    private readonly ISearcher _jumpSearch = new JumpSearch();
     
     // Define parameters for different scenarios
     [Params(10, 100, 500)]
@@ -47,6 +48,12 @@ public class SearchingBenchmarks
     public void TernarySearch()
     {
         _ternarySearch.Search(_sortedArray, TargetValue);
+    }
+
+    [Benchmark]
+    public void JumpSearch()
+    {
+        _jumpSearch.Search(_sortedArray, TargetValue);
     }
     
     private static int[] GenerateRandomArray(int length, int targetValue, int targetPosition)
