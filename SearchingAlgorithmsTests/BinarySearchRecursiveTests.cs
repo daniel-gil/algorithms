@@ -2,9 +2,22 @@
 
 namespace SearchingAlgorithmsTests;
 
-public class BinarySearchTests
+public class BinarySearchRecursiveTests
 {
-    private readonly ISearcher _searcher = new BinarySearch();
+    private readonly ISearcher _searcher = new BinarySearchRecursive();
+    
+    [Fact]
+    public void Search_WhenTargetIsLastRemainingElement_ShouldReturnItsIndex()
+    {
+        // Arrange
+        var array = new[] { 1, 3, 5 };
+
+        // Act
+        var result = _searcher.Search(array, 1);
+
+        // Assert
+        Assert.Equal(0, result);
+    }
     
     [Fact]
     public void BinarySearch_SortedArrayContainingTarget_FindsTarget()

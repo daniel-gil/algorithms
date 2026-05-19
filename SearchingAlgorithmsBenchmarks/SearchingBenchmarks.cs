@@ -1,82 +1,89 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 using SearchingAlgorithms;
-using SortingAlgorithms;
 
 namespace SearchingAlgorithmsBenchmarks;
+
+public enum SearchScenario
+{
+    Beginning,
+    Middle,
+    End,
+    Missing
+}
 
 [MemoryDiagnoser]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
 public class SearchingBenchmarks
 {
-    private const int TargetValue = 5;
+    private int _targetValue;
     
     private readonly ISearcher _linearSearch = new LinearSearch();
-    private readonly ISearcher _binarySearch = new BinarySearch();
+    private readonly ISearcher _binarySearchRecursive = new BinarySearchRecursive();
+    private readonly ISearcher _binarySearchIterative = new BinarySearchIterative();
     private readonly ISearcher _ternarySearch = new TernarySearch();
     private readonly ISearcher _jumpSearch = new JumpSearch();
     
     // Define parameters for different scenarios
-    [Params(10, 100, 500)]
+    [Params(10, 100, 1000)]
     public int ArrayLength;
     
-    private int[] _randomArray;
+    [Params(
+        SearchScenario.Beginning,
+        SearchScenario.Middle,
+        SearchScenario.End,
+        SearchScenario.Missing)]
+    public SearchScenario Scenario;
+    
     private int[] _sortedArray;
     
     // Run global setup once for each value of ArrayLength
     [GlobalSetup]
     public void GlobalSetup()
     {
-        _randomArray = GenerateRandomArray(ArrayLength, TargetValue, ArrayLength/2); 
-        _sortedArray = GenerateSortedArray(_randomArray); 
+        _sortedArray = ArrayGenerator.GenerateRandomSortedUniqueArray(ArrayLength);
+       
+        _targetValue = Scenario switch
+        {
+            SearchScenario.Beginning => _sortedArray[0],
+            SearchScenario.Middle => _sortedArray[ArrayLength / 2],
+            SearchScenario.End => _sortedArray[ArrayLength - 1],
+
+            // guaranteed missing
+            SearchScenario.Missing => -1,
+
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 
     [Benchmark(Baseline = true)]
-    public void LinearSearch()
+    public int LinearSearch()
     {
-        _linearSearch.Search(_randomArray, TargetValue);
+        return _linearSearch.Search(_sortedArray, _targetValue);
     }
 
     [Benchmark]
-    public void BinarySearch()
+    public int BinarySearchRecursive()
     {
-        _binarySearch.Search(_sortedArray, TargetValue);
+        return _binarySearchRecursive.Search(_sortedArray, _targetValue);
     }
 
     [Benchmark]
-    public void TernarySearch()
+    public int BinarySearchIterative()
     {
-        _ternarySearch.Search(_sortedArray, TargetValue);
+        return _binarySearchIterative.Search(_sortedArray, _targetValue);
     }
 
     [Benchmark]
-    public void JumpSearch()
+    public int TernarySearch()
     {
-        _jumpSearch.Search(_sortedArray, TargetValue);
+        return _ternarySearch.Search(_sortedArray, _targetValue);
     }
-    
-    private static int[] GenerateRandomArray(int length, int targetValue, int targetPosition)
-    {
-        var rand = new Random(Guid.NewGuid().GetHashCode());
-        
-        var randomArray = Enumerable.Range(0, length)
-            .Select(_ => rand.Next())
-            .ToArray();
-        
-        randomArray.Replace(targetValue, targetValue+1);
-        randomArray[targetPosition] = targetValue;
 
-        return randomArray;
-    }
-    
-    private static int[] GenerateSortedArray(int[] array)
+    [Benchmark]
+    public int JumpSearch()
     {
-        int[] copy = new int[array.Length];
-        Array.Copy(array,copy, array.Length);
-        
-        var sorter = new QuickSort();
-        sorter.Sort(copy);
-        return copy;
+        return _jumpSearch.Search(_sortedArray, _targetValue);
     }
 }

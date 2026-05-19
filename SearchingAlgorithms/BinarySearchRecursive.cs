@@ -1,6 +1,6 @@
 ﻿namespace SearchingAlgorithms;
 
-public class BinarySearch : ISearcher
+public class BinarySearchRecursive : ISearcher
 {
     public int Search(int[] array, int target)
     {
@@ -9,13 +9,13 @@ public class BinarySearch : ISearcher
     
     private static int SearchRange(int[] array, int target, int start, int end)
     {
-        if (start >= end)
+        if (start > end)
         {
             return -1;
         }
         
         // find middle point and compare it with the target
-        var middleIndex = (start + end) / 2;
+        var middleIndex = start + ((end - start) / 2); // avoid overflow for huge arrays, instead of "(start + end) / 2"
         var middleValue = array[middleIndex];
 
         if (middleValue == target)
