@@ -24,6 +24,7 @@ public class SearchingBenchmarks
     private readonly ISearcher _binarySearchIterative = new BinarySearchIterative();
     private readonly ISearcher _ternarySearch = new TernarySearch();
     private readonly ISearcher _jumpSearch = new JumpSearch();
+    private readonly ISearcher _exponentialSearch = new ExponentialSearch();
     
     // Define parameters for different scenarios
     [Params(10, 100, 1000)]
@@ -85,5 +86,11 @@ public class SearchingBenchmarks
     public int JumpSearch()
     {
         return _jumpSearch.Search(_sortedArray, _targetValue);
+    }
+
+    [Benchmark]
+    public int ExponentialSearch()
+    {
+        return _exponentialSearch.Search(_sortedArray, _targetValue);
     }
 }

@@ -7,7 +7,7 @@ public class BinarySearchRecursive : ISearcher
         return SearchRange(array, target, 0, array.Length - 1);
     }
     
-    private static int SearchRange(int[] array, int target, int start, int end)
+    public static int SearchRange(int[] array, int target, int start, int end)
     {
         if (start > end)
         {
