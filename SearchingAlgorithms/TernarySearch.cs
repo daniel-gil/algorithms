@@ -9,7 +9,7 @@ public class TernarySearch : ISearcher
     
     private static int SearchRange(int[] array, int target, int start, int end)
     {
-        if (start >= end)
+        if (start > end)
         {
             return -1;
         }
