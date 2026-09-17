@@ -33,7 +33,10 @@ public class QuickSort : ISorter
     }
 
     // this returns the index of the pivot after it has been moved to its right position (sorted)
-    // we assume that the pivot is the last element of the array 
+    // we assume that the pivot is the last element of the array
+    // Example:
+    //      Input:  array=[8, 3, 7, 4, 2, 6, 5, 1], start=0, end=7
+    //      Output: boundary=4, array=[3, 4, 2, 1]  5  [8, 7, 6]  ->  pivot (5) in the right position
     private static int Partition(int[] array, int start, int end)
     {
         var pivot = array[end];
